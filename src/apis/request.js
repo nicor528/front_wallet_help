@@ -660,15 +660,12 @@
 
   export function SingIn (email, password) {
     const data = {
-      email : "test12620@gmail.com",
-      pass : "123456",
-      /*user: {
-        name: "nicolas",
-      }*/
+      email : email,
+      password : password,
     }
     return (
       new Promise (async (res, rej) => {
-        fetch("http://3.129.111.250:4242/singInEmail", {
+        fetch("https://radiant-gorge-42555.herokuapp.com/SingIn2", {
           method: "POST",
           headers: {
             "Content-Type" : "application/json"
@@ -686,9 +683,7 @@
             rej(404)
           }
           else{
-
-            console.log(await data.json())
-            //res(data.json())
+            res(data.json())
           }
         }).catch(error => { rej(error) })
       })
