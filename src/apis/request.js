@@ -660,18 +660,21 @@
 
   export function SingIn (email, password) {
     const data = {
-      email : email,
-      password : password
+      email : "test12620@gmail.com",
+      pass : "123456",
+      /*user: {
+        name: "nicolas",
+      }*/
     }
     return (
       new Promise (async (res, rej) => {
-        fetch("https://radiant-gorge-42555.herokuapp.com/SingIn2", {
+        fetch("http://3.129.111.250:4242/singInEmail", {
           method: "POST",
           headers: {
             "Content-Type" : "application/json"
           },
           body: await JSON.stringify(data)
-        }).then((data) => {
+        }).then(async (data) => {
           if(data.status === 400){
             rej(400)
           }
@@ -683,7 +686,9 @@
             rej(404)
           }
           else{
-            res(data.json())
+
+            console.log(await data.json())
+            //res(data.json())
           }
         }).catch(error => { rej(error) })
       })
